@@ -3,12 +3,16 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems.pneumatics;
-
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class PneumaticsSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public PneumaticsSubsystem() {}
+  boolean enabled = true;
+  public PneumaticsSubsystem() {
+    Compressor c = new Compressor(0);
+    c.setClosedLoopControl(true);
+  }
 
   @Override
   public void periodic() {
