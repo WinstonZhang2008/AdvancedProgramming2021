@@ -4,27 +4,17 @@
 
 package frc.robot.subsystems.pneumatics;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.Compressor;
 
-public class PneumaticsSubsystem extends SubsystemBase {
+public class SolenoidSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  boolean enabled = true;
-  Compressor c;
+  private DoubleSolenoid solenoid;
 
-  public PneumaticsSubsystem() {
-    c = new Compressor(1);
-    c.setClosedLoopControl(true);
+  public SolenoidSubsystem() {
+    solenoid = new DoubleSolenoid(1,0,1);
   }
-
-  public void start() {
-    c.start();
-  }
-
-  public void stop() {
-    c.stop();
-  }
-
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
@@ -33,5 +23,13 @@ public class PneumaticsSubsystem extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
+  }
+  //actuates the solenoid (duh)
+  public void actuateSolenoid() {
+    this.solenoid.set(Value.kForward);
+  }
+  //retracts the solenoid (also duh)
+  public void retractSolenoid() {
+    this.solenoid.set(Value.kReverse);
   }
 }

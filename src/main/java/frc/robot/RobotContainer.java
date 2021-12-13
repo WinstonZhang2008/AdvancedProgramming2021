@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.pneumatics.RunSolenoid;
+import frc.robot.subsystems.pneumatics.SolenoidSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -22,6 +24,9 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
+  private final SolenoidSubsystem solsub = new SolenoidSubsystem();
+  private PaddedXbox xbox = new PaddedXbox();
+  private RunSolenoid runsol = new RunSolenoid(solsub, xbox);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -36,6 +41,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {}
 
+  public void setDefaultCommands() {
+    this.solsub.setDefaultCommand(this.runsol);
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
