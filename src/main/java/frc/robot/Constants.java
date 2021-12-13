@@ -23,9 +23,11 @@ public final class Constants {
         // motor1(5),
         // motor2(3),
         // motorX(x)...
-        ;
         
-        public final double id;
+        elevatorTalon1(50),
+        elevatorTalon2(51);
+        
+        public final int id;
 
         private CanIds(int id) {
             this.id = id;
