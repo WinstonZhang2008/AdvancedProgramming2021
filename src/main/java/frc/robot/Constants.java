@@ -20,12 +20,13 @@ public final class Constants {
     public static enum CanIds {
   
         //to add a motor's can id: motorName(canId),
-        // motor1(5),
+        elevatorLeft(50),
+        elevatorRight(51)
         // motor2(3),
         // motorX(x)...
         ;
         
-        public final double id;
+        public final int id;
 
         private CanIds(int id) {
             this.id = id;
