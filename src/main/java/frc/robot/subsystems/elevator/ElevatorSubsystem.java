@@ -13,12 +13,12 @@ import frc.robot.Constants.CanIds;
 
 public class ElevatorSubsystem extends SubsystemBase {
 
-  public TalonFX elevatorLeft;
-  public TalonFX elevatorRight;
+  public TalonSRX elevatorLeft;
+  public TalonSRX elevatorRight;
 
   public ElevatorSubsystem() {
-    elevatorLeft = new TalonFX(CanIds.elevatorLeft.id);
-    elevatorRight = new TalonFX(CanIds.elevatorRight.id);
+    elevatorLeft = new TalonSRX(50);
+    elevatorRight = new TalonSRX(51);
     elevatorRight.setInverted(true);
   }
 
