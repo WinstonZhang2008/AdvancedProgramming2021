@@ -5,9 +5,11 @@
 package frc.robot.subsystems.limelight;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.CanIds;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LimelightSubsystem extends SubsystemBase {
@@ -20,16 +22,19 @@ public class LimelightSubsystem extends SubsystemBase {
   private NetworkTableEntry tv;
   private NetworkTableEntry tx;
   private NetworkTableEntry ty;
-  private NetworkTableEntry ta;
-  private NetworkTableEntry ts;
+  // private NetworkTableEntry ta;
+  // private NetworkTableEntry ts;
+
+  private Servo servo;
 
   public LimelightSubsystem() {
+    this.servo = new Servo((int) CanIds.cameraServo.id);
     this.networkTable = NetworkTableInstance.getDefault().getTable("limelight");
     this.tv = this.networkTable.getEntry("tv"); // Whether the limelight has any valid targets (0 or 1)
     this.tx = this.networkTable.getEntry("tx"); // Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to 29.8 degrees)
     this.ty = networkTable.getEntry("ty"); // Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to 24.85 degrees)
-    this.ta = this.networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
-    this.ts = this.networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
+    // this.ta = this.networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
+    // this.ts = this.networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
   }
 
 
@@ -71,6 +76,14 @@ public class LimelightSubsystem extends SubsystemBase {
    */
   public void setLED(int state) {
     this.networkTable.getEntry("ledMode").setNumber(state);
+  }
+
+  public double getServoAngle() {
+    return this.servo.getAngle();
+  }
+
+  public void setServoAngle(double angle) {
+    this.servo.setAngle(angle);
   }
 
 }
