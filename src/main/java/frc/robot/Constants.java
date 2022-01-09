@@ -19,14 +19,26 @@ public final class Constants {
     // enums are a data structure primarilly used for constants
     public static enum CanIds {
         
-        cameraServo(1), // fix this
         //to add a motor's can id: motorName(canId),
         // motor1(5),
         // motor2(3),
         // motorX(x)...
+
+        cameraServo(1), // fix this
+
+        leftFalcon1(5),
+        rightFalcon1(2),
+        leftFalcon2(4),
+        rightFalcon2(3),
+        loaderFalcon(10),
+        intakeVictor(11),
+        revolverVictor(12),
+        climberFalcon(13),
+        shooterFalcon(14), 
+        hoodVictor(40), 
         ;
-        
-        public final double id;
+
+        public final int id;
 
         private CanIds(int id) {
             this.id = id;
