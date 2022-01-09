@@ -1,4 +1,4 @@
-package frc.robot.subsystems.vision;
+package frc.robot.subsystems.limelight;
 
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -7,11 +7,11 @@ import frc.robot.Constants;
 import frc.robot.Constants.RobotConstants;
 import frc.robot.subsystems.drive.DriveBaseSub;
 
-public class TurnToTx extends CommandBase {
+public class TurnToTxClosedLoop extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
   private DriveBaseSub driveBase;
-  private LimelightSub limelight;
+  private LimelightSubsystem limelight;
   private PIDController pidController;
   
   private double kP;
@@ -27,7 +27,7 @@ public class TurnToTx extends CommandBase {
   private double velocityThreshold = 115;
   private boolean velocityBelow = false;
 
-  public TurnToTx(DriveBaseSub driveBase, LimelightSub limelight) {
+  public TurnToTxClosedLoop(DriveBaseSub driveBase, LimelightSubsystem limelight) {
     this.driveBase = driveBase;
     this.limelight = limelight;
     addRequirements(driveBase, limelight);
