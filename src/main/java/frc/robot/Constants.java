@@ -26,6 +26,7 @@ public final class Constants {
 
         cameraServo(1), // fix this
 
+        // 2020 robot constants
         leftFalcon1(5),
         rightFalcon1(2),
         leftFalcon2(4),
