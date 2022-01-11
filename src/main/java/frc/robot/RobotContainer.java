@@ -45,7 +45,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // A button: limelight turn to target test
-    new JoystickButton(joystick, PaddedXbox.F310Map.kGamepadButtonY.value)
+    new JoystickButton(joystick, PaddedXbox.F310Map.kGamepadButtonA.value)
     .whenPressed(new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5));
 
   }
@@ -54,7 +54,6 @@ public class RobotContainer {
     
   }
 
-  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
