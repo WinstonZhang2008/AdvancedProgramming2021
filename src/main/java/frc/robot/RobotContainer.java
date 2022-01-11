@@ -7,6 +7,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.limelight.TurnOffLED;
+import frc.robot.subsystems.limelight.TurnToTxOpenLoop;
+import frc.robot.subsystems.drive.DriveBaseSub;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -19,8 +21,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
+  private final DriveBaseSub driveBaseSub = new DriveBaseSub();
 
-  private final TurnOffLED turnOffLED = new TurnOffLED(limelightSubsystem);
+  // private final TurnOffLED turnOffLED = new TurnOffLED(limelightSubsystem);
+  private final TurnToTxOpenLoop turnToTxOpenLoop = new TurnToTxOpenLoop(driveBaseSub, limelightSubsystem, 0.5);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -43,6 +47,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return turnOffLED;
+    return turnToTxOpenLoop;
   }
 }

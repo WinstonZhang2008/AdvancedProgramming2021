@@ -25,10 +25,7 @@ public class LimelightSubsystem extends SubsystemBase {
   // private NetworkTableEntry ta;
   // private NetworkTableEntry ts;
 
-  private Servo servo;
-
   public LimelightSubsystem() {
-    this.servo = new Servo((int) CanIds.cameraServo.id);
     this.networkTable = NetworkTableInstance.getDefault().getTable("limelight");
     this.tv = this.networkTable.getEntry("tv"); // Whether the limelight has any valid targets (0 or 1)
     this.tx = this.networkTable.getEntry("tx"); // Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to 29.8 degrees)
@@ -78,12 +75,5 @@ public class LimelightSubsystem extends SubsystemBase {
     this.networkTable.getEntry("ledMode").setNumber(state);
   }
 
-  public double getServoAngle() {
-    return this.servo.getAngle();
-  }
-
-  public void setServoAngle(double angle) {
-    this.servo.setAngle(angle);
-  }
 
 }
