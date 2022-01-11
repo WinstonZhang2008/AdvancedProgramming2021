@@ -6,11 +6,13 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.PaddedXbox;
 import frc.robot.subsystems.limelight.TurnOffLED;
 import frc.robot.subsystems.limelight.TurnToTargetOpenLoop;
-import frc.robot.subsystems.drive.DriveBaseSub;
+import frc.robot.subsystems.drive.DriveBaseSubsystem;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,11 +22,13 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  private final PaddedXbox joystick = new PaddedXbox();
+
   private final LimelightSubsystem limelightSubsystem = new LimelightSubsystem();
-  private final DriveBaseSub driveBaseSub = new DriveBaseSub();
+  private final DriveBaseSubsystem driveBaseSubsystem = new DriveBaseSubsystem();
 
   // private final TurnOffLED turnOffLED = new TurnOffLED(limelightSubsystem);
-  private final TurnToTargetOpenLoop turnToTargetOpenLoop = new TurnToTargetOpenLoop(driveBaseSub, limelightSubsystem, 0.5);
+  private final TurnToTargetOpenLoop turnToTargetOpenLoop = new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -38,7 +42,16 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    // A button: limelight turn to target test
+    new JoystickButton(joystick, PaddedXbox.F310Map.kGamepadButtonY.value)
+    .whenPressed(new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5));
+
+  }
+
+  public void setDefaultCommands() {
+    
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -49,4 +62,6 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return turnToTargetOpenLoop;
   }
+
+  
 }

@@ -6,14 +6,14 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CanIds;
 
-public class DriveBaseSub extends SubsystemBase {
+public class DriveBaseSubsystem extends SubsystemBase {
   
   public TalonFX left1;
 	public TalonFX right1;
 	public TalonFX left2;
   public TalonFX right2;
   
-  public DriveBaseSub() {
+  public DriveBaseSubsystem() {
     left1 = new TalonFX(CanIds.leftFalcon1.id);
 		right1 = new TalonFX(CanIds.rightFalcon1.id);
 		left2 = new TalonFX(CanIds.leftFalcon2.id);
@@ -77,11 +77,11 @@ public class DriveBaseSub extends SubsystemBase {
   public double getLeftVelocity(){return left1.getSelectedSensorVelocity();}
   public double getRightVelocity(){return right1.getSelectedSensorVelocity();}
 
-  public void setDefaultInversions() {
-    // driveBase.getRightMast().setInverted(true);
-    // driveBase.getRightFollow().setInverted(true);
-    // driveBase.getLeftMast().setInverted(false);
-    // driveBase.getLeftFollow().setInverted(false);
+  public void setAllDefaultInversions() {
+    right1.setInverted(true);
+    right2.setInverted(true);
+    left1.setInverted(false);
+    left2.setInverted(false);
   }
 
   public void factoryResetAll(){

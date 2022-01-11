@@ -5,12 +5,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Constants.RobotConstants;
-import frc.robot.subsystems.drive.DriveBaseSub;
+import frc.robot.subsystems.drive.DriveBaseSubsystem;
 
-public class TurnToTxClosedLoop extends CommandBase {
+public class TurnToTargetClosedLoop extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
-  private DriveBaseSub driveBase;
+  private DriveBaseSubsystem driveBase;
   private LimelightSubsystem limelight;
   private PIDController pidController;
   
@@ -27,7 +27,7 @@ public class TurnToTxClosedLoop extends CommandBase {
   private double velocityThreshold = 115;
   private boolean velocityBelow = false;
 
-  public TurnToTxClosedLoop(DriveBaseSub driveBase, LimelightSubsystem limelight) {
+  public TurnToTargetClosedLoop(DriveBaseSubsystem driveBase, LimelightSubsystem limelight) {
     this.driveBase = driveBase;
     this.limelight = limelight;
     addRequirements(driveBase, limelight);

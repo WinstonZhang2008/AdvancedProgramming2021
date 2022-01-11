@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Constants.RobotConstants;
-import frc.robot.subsystems.drive.DriveBaseSub;
+import frc.robot.subsystems.drive.DriveBaseSubsystem;
 
-public class TurnToTxOpenLoop extends CommandBase {
+public class TurnToTargetOpenLoop extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
-  private DriveBaseSub driveBase;
+  private DriveBaseSubsystem driveBase;
   private LimelightSubsystem limelight;
   private PIDController pidController;
   
@@ -21,7 +21,7 @@ public class TurnToTxOpenLoop extends CommandBase {
   private double power;
   private double distanceToTarget;
 
-  public TurnToTxOpenLoop(DriveBaseSub driveBase, LimelightSubsystem limelight, double power) {
+  public TurnToTargetOpenLoop(DriveBaseSubsystem driveBase, LimelightSubsystem limelight, double power) {
     this.driveBase = driveBase;
     this.limelight = limelight;
     addRequirements(driveBase, limelight);
@@ -47,9 +47,9 @@ public class TurnToTxOpenLoop extends CommandBase {
     driveBase.setRightPower(directionalCoefficient * power);
     driveBase.setLeftPower(-directionalCoefficient * power);
 
-    distanceToTarget = (Constants.kTargetHeight - RobotConstants.kCameraHeight) / Math.tan(Math.toRadians(ty));
-    distanceToTarget = 1.426*distanceToTarget - 52.372; // based on linear regression, hopefully accurate
-    SmartDashboard.putNumber("distance", distanceToTarget);
+    // distanceToTarget = (Constants.kTargetHeight - RobotConstants.kCameraHeight) / Math.tan(Math.toRadians(ty));
+    // distanceToTarget = 1.426*distanceToTarget - 52.372; // based on linear regression, hopefully accurate
+    // SmartDashboard.putNumber("distance", distanceToTarget);
   }
 
   @Override
