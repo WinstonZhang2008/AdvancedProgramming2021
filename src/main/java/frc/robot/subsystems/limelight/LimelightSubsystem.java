@@ -16,32 +16,26 @@ public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   
   // set up a new instance of NetworkTables (the api/library used to read values from limelight)
-  private NetworkTable networkTable;
+  NetworkTable networkTable = NetworkTableInstance.getDefault().getTable("limelight");
   
   // return network table values for tx and ty using getEntry()
-  private NetworkTableEntry tv;
-  private NetworkTableEntry tx;
-  private NetworkTableEntry ty;
-  private NetworkTableEntry ta;
-  private NetworkTableEntry ts;
+  NetworkTableEntry tv = networkTable.getEntry("tv"); // Whether the limelight has any valid targets (0 or 1)
+  NetworkTableEntry tx = networkTable.getEntry("tx"); // Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to 29.8 degrees)
+  NetworkTableEntry ty = networkTable.getEntry("ty"); // Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to 24.85 degrees)
+  NetworkTableEntry ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
+  NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
 
   public LimelightSubsystem() {
-    networkTable = NetworkTableInstance.getDefault().getTable("limelight");
-
-    this.tv = networkTable.getEntry("tv"); // Whether the limelight has any valid targets (0 or 1)
-    this.tx = networkTable.getEntry("tx"); // Horizontal Offset From Crosshair To Target (LL1: -27 degrees to 27 degrees | LL2: -29.8 to 29.8 degrees)
-    this.ty = networkTable.getEntry("ty"); // Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to 24.85 degrees)
-    this.ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
-    this.ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
+    
   }
 
 
   @Override
   public void periodic() {
     // write tx, ty, tv values onto the smart dashboard
-    SmartDashboard.putNumber("tv:", getTv());
-    SmartDashboard.putNumber("tx:", getTx());
-    SmartDashboard.putNumber("ty:", getTy());
+    SmartDashboard.putNumber("tv:", tv.getDouble(0));
+    SmartDashboard.putNumber("tx:", tx.getDouble(0));
+    SmartDashboard.putNumber("ty:", ty.getDouble(0));
   }
 
   @Override
@@ -51,16 +45,15 @@ public class LimelightSubsystem extends SubsystemBase {
 
   // create accessor methods to reference values outside of this class
   public double getTv() {
-    return tv.getDouble(0.0);
+    return tv.getDouble(0);
   }
   public double getTx() {
-    return tx.getDouble(0.00);
+    return tx.getDouble(0);
   }
   public double getTy() {
-    return ty.getDouble(0.00);
+    return ty.getDouble(0);
   }
    
-
   /**
    * set limelight led state
    * @param state Integer with value of 0, 1, 2, or 3
@@ -72,7 +65,7 @@ public class LimelightSubsystem extends SubsystemBase {
    * </ul>
    */
   public void setLED(int state) {
-    this.networkTable.getEntry("ledMode").setNumber(state);
+    networkTable.getEntry("ledMode").setNumber(state);
   }
 
 

@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.PaddedXbox;
 import frc.robot.subsystems.limelight.TurnOffLED;
 import frc.robot.subsystems.limelight.TurnToTargetOpenLoop;
+import frc.robot.subsystems.drive.ArcadeDrive;
 import frc.robot.subsystems.drive.DriveBaseSubsystem;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -30,6 +31,7 @@ public class RobotContainer {
 
   // private final TurnOffLED turnOffLED = new TurnOffLED(limelightSubsystem);
   private final TurnToTargetOpenLoop turnToTargetOpenLoop = new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5);
+  private final ArcadeDrive arcadeDrive = new ArcadeDrive(joystick, driveBaseSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -51,7 +53,7 @@ public class RobotContainer {
   }
 
   public void setDefaultCommands() {
-    
+    driveBaseSubsystem.setDefaultCommand(arcadeDrive);
   }
 
   /**
