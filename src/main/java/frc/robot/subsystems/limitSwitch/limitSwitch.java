@@ -17,7 +17,7 @@ public class limitswitch extends CommandBase {
 
   private double power;
   /** Creates a new limitSwitch. */
-  public limitswitch(double power, TalonFX talonFX_LM, TalonFX talonFX_RM, TalonFX talonFX_LF, TalonFX talonFX_RF) {
+  public limitswitch(double power) {
     this.power = power;
     
     // Use addRequirements() here to declare subsystem dependencies.
