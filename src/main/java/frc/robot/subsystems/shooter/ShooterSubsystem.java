@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import com.team7419.TalonFuncs;
+import com.team7419.math.UnitConversions;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -111,7 +112,7 @@ public class ShooterSubsystem extends SubsystemBase{
     }
 
     public double computekF(double nativeUnits){
-        UnitConversions.mpsToRPM(limelight.getV0(), RobotConstants.shooterRadius)
+        return 0; // insert regression model
     }
 
     public double getCurrentRawSpeed(){return talon.getSelectedSensorVelocity(0);}
