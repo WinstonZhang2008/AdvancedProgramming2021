@@ -4,7 +4,6 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-import com.team7419.MotorGroup;
 import com.team7419.TalonFuncs;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,8 +13,7 @@ import frc.robot.Constants.*;
 
 public class ShooterSub extends SubsystemBase{
 
-	public TalonFX talon;
-    public MotorGroup motors;
+	private TalonFX talon;
     public double powerOutput = 0;
     public double kP = 0;
     public double kI = 0;
@@ -27,9 +25,8 @@ public class ShooterSub extends SubsystemBase{
     public ControlMethod controlMethod = ControlMethod.PERCENT_OUTPUT;
 
     public ShooterSub(){
-
         talon = new TalonFX(CanIds.shooterFalcon.id);
-        // talon.configFactoryDefault();
+        talon.configFactoryDefault();
         talon.setInverted(true);
         talon.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
     }
@@ -43,7 +40,6 @@ public class ShooterSub extends SubsystemBase{
     @Override
     public void periodic() {
         SmartDashboard.putNumber("periodic speed", talon.getSelectedSensorVelocity());
-        // System.out.println(talon.getSelectedSensorVelocity());
     }
 
     public void run(){
@@ -125,5 +121,7 @@ public class ShooterSub extends SubsystemBase{
     public double getkI(){return kI;}
     public double getkD(){return kD;}
     public double getkF(){return kF;}
+
+    public TalonFX getShooter() {return talon;}
 
 }
