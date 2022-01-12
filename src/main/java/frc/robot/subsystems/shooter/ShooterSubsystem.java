@@ -10,10 +10,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.*;
+import frc.robot.subsystems.limelight.LimelightSubsystem;
 
 public class ShooterSubsystem extends SubsystemBase{
 
-	private TalonFX talon;
+    private TalonFX talon;
+    private LimelightSubsystem limelight = new LimelightSubsystem();
     public double powerOutput = 0;
     public double kP = 0;
     public double kI = 0;
@@ -23,6 +25,22 @@ public class ShooterSubsystem extends SubsystemBase{
     public double target = 500;
     private double threshold = 200;
     public ControlMethod controlMethod = ControlMethod.PERCENT_OUTPUT;
+
+    private double kCameraHeight = LimelightConstants.kCameraHeight;
+    private double kTargetHeight = LimelightConstants.kTargetHeight;
+    private double theta = limelight.getTheta();
+    private double n = LimelightConstants.n;
+    private double m = LimelightConstants.m;
+    private double r1 = LimelightConstants.r1;
+    private double g = LimelightConstants.g;
+  
+    private double d = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
+    private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(d,2)*n)-(2*d*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
+                            /((d*m*r1)*((m*r1)-d));
+    private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
+    private double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
+    private double beta = theta + alpha;
+    private double v0 = Math.sqrt(g/(2*a*(Math.pow(Math.cos(Math.toRadians(beta)),2))));
 
     public ShooterSubsystem(){
         talon = new TalonFX(CanIds.shooterFalcon.id);
@@ -93,7 +111,7 @@ public class ShooterSubsystem extends SubsystemBase{
     }
 
     public double computekF(double nativeUnits){
-        return 0; // insert mathematical equation here
+        UnitConversions.mpsToRPM(limelight.getV0(), RobotConstants.shooterRadius)
     }
 
     public double getCurrentRawSpeed(){return talon.getSelectedSensorVelocity(0);}
@@ -112,7 +130,13 @@ public class ShooterSubsystem extends SubsystemBase{
     public double getkI(){return kI;}
     public double getkD(){return kD;}
     public double getkF(){return kF;}
-    
+
+    public double getD() {return d;}
+    public double getA() {return a;}
+    public double getAlpha() {return alpha;}
+    public double getBeta() {return beta;}
+    public double getV0() {return v0;}
+
     public TalonFX getShooterTalon() {return talon;}
 
 }
