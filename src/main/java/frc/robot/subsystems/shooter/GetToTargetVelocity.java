@@ -27,7 +27,7 @@ public class GetToTargetVelocity extends CommandBase {
   public void initialize() {
 
       SmartDashboard.putString("shooter", "ramping up");
-      shooter.setkF(shooter.lookUpkF(targetRPM));
+      shooterSubsystem.setkF(shooterSubsystem.lookUpkF(targetRPM));
       
       double kP = 0;
       double kI = 0;
