@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants.LimelightConstants;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 
 public class GetToTargetVelocity extends CommandBase {
@@ -14,7 +15,7 @@ public class GetToTargetVelocity extends CommandBase {
   
   private double kF;
 
-  private double targetRPM = 0;
+  private double targetRPM = LimelightConstants.v0;
 
   public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight) {
     this.shooterSubsystem = shooterSubsystem;
@@ -30,10 +31,9 @@ public class GetToTargetVelocity extends CommandBase {
       double kP = 0;
       double kI = 0;
       double kD = 0;
-      // double[] gains = dashboard.getRampingGains();
+
       shooterSubsystem.setPIDF(kP, kI, kD, shooterSubsystem.getkF());
       shooterSubsystem.setTargetRawSpeed(targetRPM);
-      // shooter.setControlMethod(ControlMethod.SPIN_UP);
   }
 
   @Override

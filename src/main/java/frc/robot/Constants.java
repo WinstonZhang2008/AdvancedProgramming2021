@@ -51,9 +51,9 @@ public final class Constants {
         public static double kTargetHeight = 2.6416;
         public static double kCameraHeight = 0.8128;
         public static double theta = 30.0;
-        public static double m = 1.0;
-        public static double n = 0.48;
-        public static double r1 = 0.37;
+        public static double m = 1.0; 
+        public static double n = 0.48; //arbitrary
+        public static double r1 = 0.37; //arbitrary
         public static double g = -9.8;
 
         public static double d = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
@@ -61,12 +61,8 @@ public final class Constants {
                                 /((d*m*r1)*((m*r1)-d));
         public static double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
         public static double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
-
-        public final double val;
-        private LimelightConstants(double val) {
-            this.val = val;
-        }
-
+        public static double beta = theta + alpha;
+        public static double v0 = Math.sqrt(g/(2*a*(Math.pow(Math.cos(Math.toRadians(beta)),2))));
     }
 
     public static double[][] kSpeedToFf = {

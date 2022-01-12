@@ -26,10 +26,8 @@ public class LimelightSubsystem extends SubsystemBase {
   NetworkTableEntry ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
   NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
 
-  private double distance = LimelightConstants.kTargetHeight.val - LimelightConstants.kCameraHeight.val)/Math.tan(Math.toRadians(LimelightConstants.theta.val));
-
   public LimelightSubsystem() {
-    
+  
   }
 
 
@@ -58,7 +56,7 @@ public class LimelightSubsystem extends SubsystemBase {
   }
   
   public double getDistance() {
-    return (;
+    return 0; // fill in
   }
   
   /**
