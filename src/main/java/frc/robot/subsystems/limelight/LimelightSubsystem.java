@@ -26,6 +26,16 @@ public class LimelightSubsystem extends SubsystemBase {
   NetworkTableEntry ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
   NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
 
+  private double theta = Math.atan(getTy()/getTx());
+
+  private double d = (LimelightConstants.kTargetHeight-LimelightConstants.kCameraHeight)/Math.tan(Math.toRadians(theta));
+  private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(d,2)*n)-(2*d*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
+                          /((d*m*r1)*((m*r1)-d));
+  private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
+  private double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
+  private double beta = theta + alpha;
+  private double v0 = Math.sqrt(g/(2*a*(Math.pow(Math.cos(Math.toRadians(beta)),2))));
+
   public LimelightSubsystem() {
   
   }
@@ -33,10 +43,11 @@ public class LimelightSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // write tx, ty, tv values onto the smart dashboard
+    // write values onto the smart dashboard
     SmartDashboard.putNumber("tv:", tv.getDouble(0));
     SmartDashboard.putNumber("tx:", tx.getDouble(0));
     SmartDashboard.putNumber("ty:", ty.getDouble(0));
+    SmartDashboard.putNumber("theta:", getTheta());
   }
 
   @Override
@@ -54,10 +65,11 @@ public class LimelightSubsystem extends SubsystemBase {
   public double getTy() {
     return ty.getDouble(0);
   }
-  
-  public double getDistance() {
-    return 0; // fill in
+
+  public double getTheta() {
+    return theta;
   }
+  
   
   /**
    * set limelight led state

@@ -1,10 +1,12 @@
 package frc.robot.subsystems.shooter;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.team7419.math.UnitConversions;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.LimelightConstants;
+import frc.robot.Constants.RobotConstants;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 
 public class GetToTargetVelocity extends CommandBase {
@@ -15,7 +17,7 @@ public class GetToTargetVelocity extends CommandBase {
   
   private double kF;
 
-  private double targetRPM = LimelightConstants.v0;
+  private double targetRPM = UnitConversions.mPSToRPM(LimelightConstants.v0, RobotConstants.shooterRadius);
 
   public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight) {
     this.shooterSubsystem = shooterSubsystem;
