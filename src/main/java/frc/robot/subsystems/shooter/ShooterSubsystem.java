@@ -92,17 +92,8 @@ public class ShooterSubsystem extends SubsystemBase{
         }
     }
 
-    public double lookUpkF(double nativeUnits){
-        double output = 0;
-        for(double[] pair : Constants.kSpeedToFf){
-            if(pair[0] == nativeUnits){output = pair[1];}
-        }
-        if(output == 0){output = computekF(nativeUnits);}
-        return output; 
-    }
-
     public double computekF(double nativeUnits){
-        return 47.3172/target + .0462152;
+        return 0; // insert mathematical equation here
     }
 
     public double getCurrentRawSpeed(){return talon.getSelectedSensorVelocity(0);}
@@ -121,7 +112,7 @@ public class ShooterSubsystem extends SubsystemBase{
     public double getkI(){return kI;}
     public double getkD(){return kD;}
     public double getkF(){return kF;}
-
+    
     public TalonFX getShooterTalon() {return talon;}
 
 }

@@ -72,10 +72,8 @@ public final class Constants {
         {22000, .0472},
     };           
 
-    public static double kTargetHeight = 80; // 98 ish in real game
+    public static double kTargetHeight = 2.6416;
+    public static double kCameraHeight = 0.8128;
     
-    public static class RobotConstants{
-        public static double kCameraHeight = 10;
-    }
 
 }

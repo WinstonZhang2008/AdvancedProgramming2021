@@ -53,7 +53,10 @@ public class LimelightSubsystem extends SubsystemBase {
   public double getTy() {
     return ty.getDouble(0);
   }
-   
+  
+  public double distanceToTarget() {
+    return 0;
+  }
   /**
    * set limelight led state
    * @param state Integer with value of 0, 1, 2, or 3
