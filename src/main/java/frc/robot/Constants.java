@@ -56,8 +56,11 @@ public final class Constants {
         public static double r1 = 0.37;
         public static double g = -9.8;
 
-        public static double distance = 0;
-        ;
+        public static double d = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
+        public static double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(d,2)*n)-(2*d*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
+                                /((d*m*r1)*((m*r1)-d));
+        public static double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
+        public static double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
 
         public final double val;
         private LimelightConstants(double val) {
