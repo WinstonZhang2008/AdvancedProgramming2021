@@ -27,6 +27,7 @@ public class LimelightSubsystem extends SubsystemBase {
   NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
 
   private double theta = Math.atan(getTy()/getTx());
+
   private double kCameraHeight = LimelightConstants.kCameraHeight;
   private double kTargetHeight = LimelightConstants.kTargetHeight;
   private double n = LimelightConstants.n;
@@ -40,8 +41,7 @@ public class LimelightSubsystem extends SubsystemBase {
   private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
   private double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
   private double beta = theta + alpha;
-  private double v0 = Math.sqrt(g/(2*a*(Math.pow(Math.cos(Math.toRadians(beta)),2))));
-
+  
   public LimelightSubsystem() {
   
   }
@@ -71,13 +71,15 @@ public class LimelightSubsystem extends SubsystemBase {
   public double getTy() {
     return ty.getDouble(0);
   }
-
+  
   public double getTheta() {return theta;}
+
   public double getD() {return d;}
   public double getA() {return a;}
   public double getAlpha() {return alpha;}
   public double getBeta() {return beta;}
   public double getV0() {return v0;}
+
   
   
   /**
