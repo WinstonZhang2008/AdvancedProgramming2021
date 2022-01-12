@@ -9,15 +9,14 @@ import frc.robot.subsystems.limelight.LimelightSubsystem;
 public class GetToTargetVelocity extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
 
-  private ShooterSub shooterSubsystem;
+  private ShooterSubsystem shooterSubsystem;
   private LimelightSubsystem limelight;
+  
   private double kF;
 
   private double targetRPM;
-  private double steadyLoops = 0;
-  private boolean stable = true;
 
-  public GetToTargetVelocity(ShooterSub shooter, LimelightSubsystem limelight, double targetRPM) {
+  public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight, double targetRPM) {
     this.shooterSubsystem = shooterSubsystem;
     this.limelight = limelight;
     this.targetRPM = targetRPM;
@@ -33,8 +32,8 @@ public class GetToTargetVelocity extends CommandBase {
       double kI = 0;
       double kD = 0;
       // double[] gains = dashboard.getRampingGains();
-      shooter.setPIDF(kP, kI, kD, shooter.getkF());
-      shooter.setTargetRawSpeed(targetRPM);
+      shooterSubsystem.setPIDF(kP, kI, kD, shooterSubsystem.getkF());
+      shooterSubsystem.setTargetRawSpeed(targetRPM);
       // shooter.setControlMethod(ControlMethod.SPIN_UP);
   }
 
@@ -45,7 +44,7 @@ public class GetToTargetVelocity extends CommandBase {
 
   @Override
   public void end(boolean interrupted) {
-    shooter.off();
+    shooterSubsystem.off();
   }
 
   @Override
