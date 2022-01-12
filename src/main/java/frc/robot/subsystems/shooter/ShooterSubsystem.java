@@ -29,8 +29,8 @@ public class ShooterSubsystem extends SubsystemBase{
 
     private double a = limelight.getA();
     private double g = LimelightConstants.g;
+    private double beta = limelight.getBeta();
     private double v0 = Math.sqrt(g/(2*a*(Math.pow(Math.cos(Math.toRadians(beta)),2))));
-
 
     public ShooterSubsystem(){
         talon = new TalonFX(CanIds.shooterFalcon.id);
