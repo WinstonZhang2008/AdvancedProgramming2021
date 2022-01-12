@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.Constants.*;
 
-public class ShooterSub extends SubsystemBase{
+public class ShooterSubsystem extends SubsystemBase{
 
 	private TalonFX talon;
     public double powerOutput = 0;
@@ -24,7 +24,7 @@ public class ShooterSub extends SubsystemBase{
     private double threshold = 200;
     public ControlMethod controlMethod = ControlMethod.PERCENT_OUTPUT;
 
-    public ShooterSub(){
+    public ShooterSubsystem(){
         talon = new TalonFX(CanIds.shooterFalcon.id);
         talon.configFactoryDefault();
         talon.setInverted(true);
@@ -122,6 +122,6 @@ public class ShooterSub extends SubsystemBase{
     public double getkD(){return kD;}
     public double getkF(){return kF;}
 
-    public TalonFX getShooter() {return talon;}
+    public TalonFX getShooterTalon() {return talon;}
 
 }
