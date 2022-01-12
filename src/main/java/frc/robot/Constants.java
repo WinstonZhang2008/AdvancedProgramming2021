@@ -54,9 +54,7 @@ public final class Constants {
         public static double m = 1.0; 
         public static double n = 0.48; //arbitrary
         public static double r1 = 0.37; //arbitrary
-        public static double g = -9.8;
-
-        
+        public static double g = -9.8;  
     }
 
     public static class RobotConstants {

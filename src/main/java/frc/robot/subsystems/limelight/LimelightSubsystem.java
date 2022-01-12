@@ -33,7 +33,6 @@ public class LimelightSubsystem extends SubsystemBase {
   private double n = LimelightConstants.n;
   private double m = LimelightConstants.m;
   private double r1 = LimelightConstants.r1;
-  private double g = LimelightConstants.g;
 
   private double d = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
   private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(d,2)*n)-(2*d*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
@@ -78,9 +77,7 @@ public class LimelightSubsystem extends SubsystemBase {
   public double getA() {return a;}
   public double getAlpha() {return alpha;}
   public double getBeta() {return beta;}
-  public double getV0() {return v0;}
 
-  
   
   /**
    * set limelight led state
