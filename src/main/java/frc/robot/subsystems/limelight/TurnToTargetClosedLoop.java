@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.Constants.LimelightConstants;
 import frc.robot.subsystems.drive.DriveBaseSubsystem;
 
 public class TurnToTargetClosedLoop extends CommandBase {
@@ -57,7 +58,7 @@ public class TurnToTargetClosedLoop extends CommandBase {
     driveBase.setLeftPower(-pidOutput);
     driveBase.setRightPower(pidOutput);
 
-    distanceToTarget =  (Constants.kTargetHeight - Constants.kCameraHeight) / Math.tan(Math.toRadians(ty));
+    distanceToTarget = (LimelightConstants.kTargetHeight - LimelightConstants.kCameraHeight) / Math.tan(Math.toRadians(ty));
     distanceToTarget = 1.426*distanceToTarget - 52.372; // based on linear regression, hopefully accurate
     SmartDashboard.putNumber("distance", distanceToTarget);
 

@@ -47,6 +47,25 @@ public final class Constants {
 
     }
 
+    public static class LimelightConstants {
+        public static double kTargetHeight = 2.6416;
+        public static double kCameraHeight = 0.8128;
+        public static double theta = 30.0;
+        public static double m = 1.0;
+        public static double n = 0.48;
+        public static double r1 = 0.37;
+        public static double g = -9.8;
+
+        public static double distance = 0;
+        ;
+
+        public final double val;
+        private LimelightConstants(double val) {
+            this.val = val;
+        }
+
+    }
+
     public static double[][] kSpeedToFf = {
         {1000, .09},
         {2000, .065},
@@ -71,9 +90,6 @@ public final class Constants {
         {21000, .0472},
         {22000, .0472},
     };           
-
-    public static double kTargetHeight = 2.6416;
-    public static double kCameraHeight = 0.8128;
     
 
 }

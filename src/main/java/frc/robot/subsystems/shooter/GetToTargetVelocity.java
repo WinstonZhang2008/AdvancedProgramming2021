@@ -14,19 +14,18 @@ public class GetToTargetVelocity extends CommandBase {
   
   private double kF;
 
-  private double targetRPM;
+  private double targetRPM = 0;
 
-  public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight, double targetRPM) {
+  public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight) {
     this.shooterSubsystem = shooterSubsystem;
     this.limelight = limelight;
-    this.targetRPM = targetRPM;
   }
 
   @Override
   public void initialize() {
 
       SmartDashboard.putString("shooter", "ramping up");
-      shooterSubsystem.setkF(shooterSubsystem.lookUpkF(targetRPM));
+      shooterSubsystem.setkF(shooterSubsystem.computekF(targetRPM));
       
       double kP = 0;
       double kI = 0;

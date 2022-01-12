@@ -6,6 +6,7 @@ package frc.robot.subsystems.limelight;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CanIds;
+import frc.robot.Constants.LimelightConstants;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -24,6 +25,8 @@ public class LimelightSubsystem extends SubsystemBase {
   NetworkTableEntry ty = networkTable.getEntry("ty"); // Vertical Offset From Crosshair To Target (LL1: -20.5 degrees to 20.5 degrees | LL2: -24.85 to 24.85 degrees)
   NetworkTableEntry ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
   NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
+
+  private double distance = LimelightConstants.kTargetHeight.val - LimelightConstants.kCameraHeight.val)/Math.tan(Math.toRadians(LimelightConstants.theta.val));
 
   public LimelightSubsystem() {
     
@@ -54,9 +57,10 @@ public class LimelightSubsystem extends SubsystemBase {
     return ty.getDouble(0);
   }
   
-  public double distanceToTarget() {
-    return 0;
+  public double getDistance() {
+    return (;
   }
+  
   /**
    * set limelight led state
    * @param state Integer with value of 0, 1, 2, or 3
