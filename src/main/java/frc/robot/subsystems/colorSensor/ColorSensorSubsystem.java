@@ -16,7 +16,14 @@ public class ColorSensorSubsystem extends SubsystemBase {
   private final I2C.Port i2cPort = I2C.Port.kOnboard;
   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
-  public void robotPeriodic() {
+  public ColorSensorSubsystem() {
+
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+
     /**
      * The method GetColor() returns a normalized color value from the sensor and can be
      * useful if outputting the color to an RGB LED or similar. To
@@ -57,12 +64,6 @@ public class ColorSensorSubsystem extends SubsystemBase {
     int proximity = m_colorSensor.getProximity();
 
     SmartDashboard.putNumber("Proximity", proximity);
-
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
   }
 
   // @Override
