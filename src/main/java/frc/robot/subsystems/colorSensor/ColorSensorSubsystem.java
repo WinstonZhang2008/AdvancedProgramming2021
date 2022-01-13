@@ -1,7 +1,6 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems.colorSensor;
 
 import com.revrobotics.ColorSensorV3;
@@ -45,10 +44,10 @@ public class ColorSensorSubsystem extends SubsystemBase {
      * Open Smart Dashboard or Shuffleboard to see the color detected by the 
      * sensor.
      */
-    SmartDashboard.putNumber("Red", detectedColor.red);
-    SmartDashboard.putNumber("Green", detectedColor.green);
-    SmartDashboard.putNumber("Blue", detectedColor.blue);
-    SmartDashboard.putNumber("IR", IR);
+    SmartDashboard.putNumber("c: Red", detectedColor.red);
+    SmartDashboard.putNumber("c: Green", detectedColor.green);
+    SmartDashboard.putNumber("c: Blue", detectedColor.blue);
+    SmartDashboard.putNumber("c: IR", IR);
 
     /**
      * In addition to RGB IR values, the color sensor can also return an 

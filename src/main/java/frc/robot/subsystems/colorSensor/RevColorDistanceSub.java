@@ -19,11 +19,13 @@ public class RevColorDistanceSub extends SubsystemBase {
   @Override
   public void periodic() {
     Color rgb = colorSensor.getColor();
-    SmartDashboard.putNumber("red", rgb.red);
-    SmartDashboard.putNumber("green", rgb.green);
-    SmartDashboard.putNumber("blue", rgb.blue);
-    SmartDashboard.putNumber("proximity", this.getProximity());
-    SmartDashboard.putNumber("distance (in)", this.getInches());
+    SmartDashboard.putNumber("r: red", rgb.red);
+    SmartDashboard.putNumber("r: green", rgb.green);
+    SmartDashboard.putNumber("r: blue", rgb.blue);
+    SmartDashboard.putNumber("r: proximity", this.getProximity());
+    SmartDashboard.putNumber("r: distance (in)", this.getInches());
+    String color = Math.max(rgb.red, Math.max(rgb.blue, rgb.green)) != rgb.blue ? "red" : "blue";
+    SmartDashboard.putString("r: color", (this.getProximity()>=130 ? color : "too far"));
   }
 
   public double getProximity(){
