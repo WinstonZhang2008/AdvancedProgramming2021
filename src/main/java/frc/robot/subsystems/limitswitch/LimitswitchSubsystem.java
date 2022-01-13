@@ -7,28 +7,28 @@ package frc.robot.subsystems.limitswitch;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-  import frc.robot.drivebase.DriveBaseSub;
 
-  public class LimitswitchSubsystem extends SubsystemBase{
-    DigitalInput forwardLimitSwitch, reverseLimitSwitch;
+public class LimitswitchSubsystem extends SubsystemBase{
+  DigitalInput forwardLimitSwitch, reverseLimitSwitch;
 
 
-    public LimitswitchSubsystem(){
-        DigitalInput forwardLimitSwitch = new DigitalInput(1);
-        DigitalInput reverseLimitSwitch = new DigitalInput(2);
-    }
+  public LimitswitchSubsystem(){
+      DigitalInput forwardLimitSwitch = new DigitalInput(1);
+      DigitalInput reverseLimitSwitch = new DigitalInput(2);
+  }
 
-    public void periodic()
-    {
-        forwardLimitSwitch.get();
-    }
+  public void periodic()
+  {
+      SmartDashboard.putBoolean("limit switch",forwardLimitSwitch.get());
+  }
 
-    public DigitalInput getForwardLimitSwitch() {
-        return forwardLimitSwitch;
-    }
+  public DigitalInput getForwardLimitSwitch() {
+      return forwardLimitSwitch;
+  }
 
-    public DigitalInput getReverseLimitSwitch(){
-        return reverseLimitSwitch;
-    }
+  public DigitalInput getReverseLimitSwitch(){
+      return reverseLimitSwitch;
+  }
 }
