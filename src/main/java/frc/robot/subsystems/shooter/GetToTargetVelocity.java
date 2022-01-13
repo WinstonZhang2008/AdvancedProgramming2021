@@ -17,7 +17,7 @@ public class GetToTargetVelocity extends CommandBase {
   
   private double kF;
 
-  private double targetRPM = UnitConversions.mpsToRPM(shooterSubsystem.getV0(), RobotConstants.shooterRadius);
+  private double targetRPM = UnitConversions.mPSToRPM(shooterSubsystem.getV0(), RobotConstants.shooterRadius);
 
   public GetToTargetVelocity(ShooterSubsystem shooter, LimelightSubsystem limelight) {
     this.shooterSubsystem = shooterSubsystem;

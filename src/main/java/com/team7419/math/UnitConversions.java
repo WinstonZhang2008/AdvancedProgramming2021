@@ -6,7 +6,7 @@ public class UnitConversions{
         return rpm * 2 * Math.PI / 60;
     }
 
-    public static double mpsToRPM(double mps, double radius) {
+    public static double mPSToRPM(double mps, double radius) {
         return (60*mps)/(2*Math.PI*radius);
     }
 
