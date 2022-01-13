@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.PaddedXbox;
 import frc.robot.subsystems.colorSensor.ColorSensorSubsystem;
+import frc.robot.subsystems.colorSensor.RevColorDistanceSub;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -22,6 +23,7 @@ public class RobotContainer {
   // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final PaddedXbox joystick = new PaddedXbox();
   private final ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
+  private final RevColorDistanceSub revColorDistanceSub = new RevColorDistanceSub();
   // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   
 
