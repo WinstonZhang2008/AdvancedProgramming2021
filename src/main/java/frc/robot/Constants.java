@@ -55,6 +55,7 @@ public final class Constants {
         public static double n = 0.48; //arbitrary
         public static double r1 = 0.37; //arbitrary
         public static double g = -9.8;  
+        public static double focalLength = 2.9272781257541;
     }
 
     public static class RobotConstants {
