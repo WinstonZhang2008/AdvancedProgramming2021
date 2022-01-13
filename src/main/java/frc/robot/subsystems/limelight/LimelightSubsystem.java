@@ -35,7 +35,9 @@ public class LimelightSubsystem extends SubsystemBase {
   // ty represents the angle from limelight to target
   private double theta = LimelightConstants.mountingAngle + getTy();
 
+  // distance is the horizontal distance to target
   private double distance = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
+
   private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(distance,2)*n)-(2*distance*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
                           /((distance*m*r1)*((m*r1)-distance));
   private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(distance-(m*r1))))/(Math.pow((distance-(m*r1)),2));
@@ -50,9 +52,10 @@ public class LimelightSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // write values onto the smart dashboard
-    SmartDashboard.putNumber("tv:", tv.getDouble(0));
-    SmartDashboard.putNumber("tx:", tx.getDouble(0));
-    SmartDashboard.putNumber("ty:", ty.getDouble(0));
+    SmartDashboard.putNumber("tv", tv.getDouble(0));
+    SmartDashboard.putNumber("tx", tx.getDouble(0));
+    SmartDashboard.putNumber("ty", ty.getDouble(0));
+    SmartDashboard.putNumber("ta", ta.getDouble(0));
     SmartDashboard.putNumber("theta:", getTheta());
   }
 
