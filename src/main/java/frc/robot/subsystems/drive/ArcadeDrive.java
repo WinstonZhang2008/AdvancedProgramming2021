@@ -17,7 +17,6 @@ public class ArcadeDrive extends CommandBase {
   private PaddedXbox joystick;
 
   
-  // public ArcadeDrive(PaddedXbox joystick, DriveBaseSubsystem driveBase, double kStraight, double kTurn, double kSlowStraight, double kSlowTurn){
   public ArcadeDrive(PaddedXbox joystick, DriveBaseSubsystem driveBase, double kStraight, double kTurn, double kSlowStraight, double kSlowTurn){
     this.joystick = joystick;
     this.driveBase = driveBase;
