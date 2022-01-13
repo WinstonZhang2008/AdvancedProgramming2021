@@ -13,11 +13,11 @@
   //telebop
   //telebop
 
-  public class limitswitch extends CommandBase {
+  public class LimitswitchSubystem extends CommandBase {
 
     private double power;
     /** Creates a new limitSwitch. */
-    public limitswitch(double power) {
+    public LimitswitchSubystem(double power) {
       this.power = power;
       
       // Use addRequirements() here to declare subsystem dependencies.
