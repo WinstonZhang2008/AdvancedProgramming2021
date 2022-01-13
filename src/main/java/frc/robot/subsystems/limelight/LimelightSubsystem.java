@@ -56,7 +56,7 @@ public class LimelightSubsystem extends SubsystemBase {
     SmartDashboard.putNumber("tx", tx.getDouble(0));
     SmartDashboard.putNumber("ty", ty.getDouble(0));
     SmartDashboard.putNumber("ta", ta.getDouble(0));
-    SmartDashboard.putNumber("theta:", getTheta());
+    SmartDashboard.putNumber("theta", getTheta());
   }
 
   @Override
