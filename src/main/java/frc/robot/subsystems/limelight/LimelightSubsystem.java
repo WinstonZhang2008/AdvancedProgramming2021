@@ -26,18 +26,19 @@ public class LimelightSubsystem extends SubsystemBase {
   NetworkTableEntry ta = networkTable.getEntry("ta"); // Target Area (0% of image to 100% of image)
   NetworkTableEntry ts = networkTable.getEntry("ts"); // Skew or rotation (-90 degrees to 0 degrees)
 
-  private double theta = Math.atan(getTy()/getTx());
-
   private double kCameraHeight = LimelightConstants.kCameraHeight;
   private double kTargetHeight = LimelightConstants.kTargetHeight;
   private double n = LimelightConstants.n;
   private double m = LimelightConstants.m;
   private double r1 = LimelightConstants.r1;
 
-  private double d = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
-  private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(d,2)*n)-(2*d*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
-                          /((d*m*r1)*((m*r1)-d));
-  private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(d-(m*r1))))/(Math.pow((d-(m*r1)),2));
+  // ty represents the angle from limelight to target
+  private double theta = LimelightConstants.mountingAngle + getTy();
+
+  private double distance = (kTargetHeight-kCameraHeight)/Math.tan(Math.toRadians(theta));
+  private double b = ((kTargetHeight-kCameraHeight)*((-Math.pow(distance,2)*n)-(2*distance*m*r1)+(Math.pow(m,2)*Math.pow(r1,2))))
+                          /((distance*m*r1)*((m*r1)-distance));
+  private double a = (((kTargetHeight-kCameraHeight)*(1+n))-(b*(distance-(m*r1))))/(Math.pow((distance-(m*r1)),2));
   private double alpha = Math.atan((b-Math.tan(Math.toRadians(theta)))/(1+(b*Math.tan(Math.toRadians(theta)))));
   private double beta = theta + alpha;
   
@@ -73,7 +74,7 @@ public class LimelightSubsystem extends SubsystemBase {
   
   public double getTheta() {return theta;}
 
-  public double getD() {return d;}
+  public double getD() {return distance;}
   public double getA() {return a;}
   public double getAlpha() {return alpha;}
   public double getBeta() {return beta;}
