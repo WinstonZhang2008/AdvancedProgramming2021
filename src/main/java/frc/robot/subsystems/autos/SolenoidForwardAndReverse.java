@@ -9,7 +9,7 @@ import frc.robot.subsystems.pneumatics.SolenoidSub;
 public class SolenoidForwardAndReverse extends SequentialCommandGroup {
     public SolenoidForwardAndReverse(SolenoidSub solenoid) {
         addCommands(new RunPneumaticsSystem(solenoid, false));
-        addCommands(WaitCommand(0.1));
+        //addCommands(WaitCommand(0.1));
         addCommands(new RunPneumaticsSystem(solenoid, true));
 
     }
