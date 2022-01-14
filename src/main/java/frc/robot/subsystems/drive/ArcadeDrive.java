@@ -32,14 +32,10 @@ public class ArcadeDrive extends CommandBase {
     driveBase.factoryResetAll();    
     driveBase.setAllDefaultInversions();
     driveBase.coast(); 
-    SmartDashboard.putString("command status", "init arcade");
   }
 
   @Override
   public void execute() {
-
-    SmartDashboard.putString("command status", "exec arcade");
-    
     double leftPower = kTurn * joystick.getRightX() - kStraight * joystick.getLeftY() + kSlowStraight * joystick.getRightY();
     double rightPower = -kTurn * joystick.getRightX() - kStraight * joystick.getLeftY() + kSlowStraight * joystick.getRightY();
 
