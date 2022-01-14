@@ -10,8 +10,10 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.PaddedXbox;
 import frc.robot.subsystems.limelight.TurnOffLED;
 import frc.robot.subsystems.limelight.TurnToTargetOpenLoop;
+import frc.robot.subsystems.limelight.TurnToTargetClosedLoop;
 import frc.robot.subsystems.drive.ArcadeDrive;
 import frc.robot.subsystems.drive.DriveBaseSubsystem;
+import frc.robot.subsystems.limelight.FollowTarget;
 import frc.robot.subsystems.limelight.LimelightSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -32,6 +34,7 @@ public class RobotContainer {
 
   // private final TurnOffLED turnOffLED = new TurnOffLED(limelightSubsystem);
   private final TurnToTargetOpenLoop turnToTargetOpenLoop = new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5);
+  private final FollowTarget followTarget = new FollowTarget(driveBaseSubsystem, limelightSubsystem);
   private final ArcadeDrive arcadeDrive = new ArcadeDrive(joystick, driveBaseSubsystem, 0.5, 0.5, 0.5, 0.5);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -51,10 +54,14 @@ public class RobotContainer {
     new JoystickButton(joystick, PaddedXbox.F310Map.kGamepadButtonA.value)
     .whenPressed(new TurnToTargetOpenLoop(driveBaseSubsystem, limelightSubsystem, 0.5));
 
+    new JoystickButton(joystick, PaddedXbox.F310Map.kGamepadButtonX.value)
+    .whenPressed(new TurnToTargetClosedLoop(driveBaseSubsystem, limelightSubsystem));
+
   }
 
   public void setDefaultCommands() {
-    driveBaseSubsystem.setDefaultCommand(arcadeDrive);
+    // driveBaseSubsystem.setDefaultCommand(arcadeDrive);
+    limelightSubsystem.setDefaultCommand(followTarget);
   }
 
   /**
