@@ -44,7 +44,6 @@ public final class Constants {
         private CanIds(int id) {
             this.id = id;
         }
-
     }
 
     public static class LimelightConstants {
@@ -86,6 +85,4 @@ public final class Constants {
         {21000, .0472},
         {22000, .0472},
     };           
-    
-
 }
