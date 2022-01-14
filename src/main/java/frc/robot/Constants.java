@@ -24,8 +24,6 @@ public final class Constants {
         // motor2(3),
         // motorX(x)...
 
-        cameraServo(1), // fix this
-
         // 2020 robot constants
         leftFalcon1(5),
         rightFalcon1(2),
