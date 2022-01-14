@@ -11,24 +11,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LimitswitchSubsystem extends SubsystemBase{
-  DigitalInput forwardLimitSwitch, reverseLimitSwitch;
+  private DigitalInput limitSwitch;
 
 
   public LimitswitchSubsystem(){
-      DigitalInput forwardLimitSwitch = new DigitalInput(1);
-      DigitalInput reverseLimitSwitch = new DigitalInput(2);
+    limitSwitch = new DigitalInput(0);
   }
 
   public void periodic()
   {
-      SmartDashboard.putBoolean("limit switch",forwardLimitSwitch.get());
+      SmartDashboard.putBoolean("limit switch",limitSwitch.get());
   }
 
-  public DigitalInput getForwardLimitSwitch() {
-      return forwardLimitSwitch;
+  public DigitalInput getLimitSwitch() {
+      return limitSwitch;
   }
 
-  public DigitalInput getReverseLimitSwitch(){
-      return reverseLimitSwitch;
-  }
 }
