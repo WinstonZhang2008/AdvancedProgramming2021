@@ -19,6 +19,7 @@ public class TurnToTargetOpenLoop extends CommandBase {
   public TurnToTargetOpenLoop(DriveBaseSubsystem driveBase, LimelightSubsystem limelight, double power) {
     this.driveBase = driveBase;
     this.limelight = limelight;
+    this.power = power;
     addRequirements(driveBase, limelight);
   }
 
