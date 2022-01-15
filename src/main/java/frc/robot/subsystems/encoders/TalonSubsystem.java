@@ -6,9 +6,13 @@ package frc.robot.subsystems.encoders;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+  private TalonFX talon;
+
 public class TalonSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
-  public TalonSubsystem() {}
+  public TalonSubsystem() {
+      talon = new TalonFX(0);
+  }
 
   @Override
   public void periodic() {
@@ -18,5 +22,9 @@ public class TalonSubsystem extends SubsystemBase {
   @Override
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
+  }
+
+  public getTalon() {
+    return talon;
   }
 }
