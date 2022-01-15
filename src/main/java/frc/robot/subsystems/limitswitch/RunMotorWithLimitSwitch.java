@@ -5,14 +5,14 @@ import frc.robot.subsystems.talon.TalonSubsystem;
 
 public class RunMotorWithLimitSwitch extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private LimitswitchSubsystem limitswitchSubsystem;
+  private LimitswitchSubsystem limitSwitchSubsystem;
   private TalonSubsystem talonSubsystem;
 
   public RunMotorWithLimitSwitch(LimitswitchSubsystem limitSwitchSubsystem, TalonSubsystem talonSubsystem) {
-    this.limitswitchSubsystem = limitSwitchSubsystem;
+    this.limitSwitchSubsystem = limitSwitchSubsystem;
     this.talonSubsystem= talonSubsystem;
     // uses addRequirements() instead of requires()
-    addRequirements(limitswitchSubsystem, talonSubsystem);
+    addRequirements(limitSwitchSubsystem, talonSubsystem);
   }
 
   @Override
@@ -21,7 +21,7 @@ public class RunMotorWithLimitSwitch extends CommandBase {
 
   @Override
   public void execute() {
-    if (limitswitchSubsystem.getLimitSwitch().get()){
+    if (limitSwitchSubsystem.getLimitSwitch().get()){
       talonSubsystem.setPower(0.2);
     }
     // add an else statement that brakes the motor

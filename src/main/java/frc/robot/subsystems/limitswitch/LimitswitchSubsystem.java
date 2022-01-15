@@ -22,7 +22,7 @@ public class LimitswitchSubsystem extends SubsystemBase{
   {
       SmartDashboard.putBoolean("limit switch",limitSwitch.get());
   }
-
+  
   public DigitalInput getLimitSwitch() {
       return limitSwitch;
   }
