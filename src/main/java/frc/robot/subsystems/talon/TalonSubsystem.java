@@ -8,10 +8,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
-private TalonFX talon;
-
 public class TalonSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
+
+  private TalonFX talon;
+
   public TalonSubsystem() {
       talon = new TalonFX(0);
   }
@@ -33,5 +34,7 @@ public class TalonSubsystem extends SubsystemBase {
   public void setPower(double power) {
     talon.set(ControlMode.PercentOutput, power);
   }
+
+  // write a method that puts the talon on brake mode, reference assignments or internet for help
 
 }

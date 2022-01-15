@@ -22,8 +22,9 @@ public class RunMotorWithLimitSwitch extends CommandBase {
   @Override
   public void execute() {
     if (limitswitchSubsystem.getLimitSwitch().get()){
-      talonSubsystem.getTalon().setPower(0.2);
+      talonSubsystem.setPower(0.2);
     }
+    // add an else statement that brakes the motor
   }
 
   @Override
