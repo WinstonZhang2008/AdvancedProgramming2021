@@ -27,4 +27,8 @@ public class TalonSubsystem extends SubsystemBase {
   public getTalon() {
     return talon;
   }
+
+  public void setPower(double power) {
+    talon.set(ControlMode.PERCENT_OUTPUT, power);
+  }
 }
