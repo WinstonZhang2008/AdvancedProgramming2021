@@ -5,6 +5,7 @@
 package frc.robot.subsystems.encoders;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 
   private TalonFX talon;
 
@@ -29,6 +30,7 @@ public class TalonSubsystem extends SubsystemBase {
   }
 
   public void setPower(double power) {
-    talon.set(ControlMode.PERCENT_OUTPUT, power);
+    talon.set(ControlMode.PercentOutput, power);
   }
+
 }
