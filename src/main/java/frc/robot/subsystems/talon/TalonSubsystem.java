@@ -36,5 +36,8 @@ public class TalonSubsystem extends SubsystemBase {
   }
 
   // write a method that puts the talon on brake mode, reference assignments or internet
+  public void end(boolean interrupted){
+    this.talon.setPower(0);
+  }
 
 }
